@@ -69,6 +69,8 @@ namespace WebApplication
             SqlConnection sqlConnection = new SqlConnection(connectionString);
             SqlCommand cmd = new SqlCommand("select * from Movie", sqlConnection);
             SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+
+
             DataTable dt = new DataTable();
             dataAdapter.Fill(dt);
             return dt;
