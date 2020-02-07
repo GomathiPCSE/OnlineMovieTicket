@@ -69,11 +69,31 @@ namespace WebApplication
             SqlConnection sqlConnection = new SqlConnection(connectionString);
             SqlCommand cmd = new SqlCommand("select * from Movie", sqlConnection);
             SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
-
-
             DataTable dt = new DataTable();
             dataAdapter.Fill(dt);
             return dt;
+        }
+        internal static void RowDeleting(int id)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+            try
+            {
+                sqlConnection.Open();
+                string sqlCommand = "SP_Delete";
+                SqlCommand cmd = new SqlCommand(sqlCommand, sqlConnection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Exception caught");
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
         }
     }
 }
