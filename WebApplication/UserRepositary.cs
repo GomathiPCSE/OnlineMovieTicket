@@ -73,6 +73,5 @@ namespace WebApplication
             dataAdapter.Fill(dt);
             return dt;
         }
-
     }
 }
