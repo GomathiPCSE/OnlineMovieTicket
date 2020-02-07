@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -13,13 +12,13 @@ namespace WebApplication
         {
             if (!Page.IsPostBack)
             {
-                refreshdata();
+                Refreshdata();
             }
         }
-        protected void refreshdata()
+        protected void Refreshdata()
         {
             DataTable dataTable;
-            dataTable = UserRepositary.refreshdata();
+            dataTable = UserRepositary.Refreshdata();
             idGridMovie.DataSource = dataTable;
             idGridMovie.DataBind();
         }
@@ -27,18 +26,18 @@ namespace WebApplication
         {
             int id = Convert.ToInt16(idGridMovie.DataKeys[e.RowIndex].Values["SlNo"].ToString());
             UserRepositary.RowDeleting(id);
-            UserRepositary.refreshdata();
+            UserRepositary.Refreshdata();
         }
         protected void Grid_RowEditing(object sender, GridViewEditEventArgs e)
         {
             idGridMovie.EditIndex = e.NewEditIndex;
-            refreshdata();
+            Refreshdata();
         }
 
         protected void Grid_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             idGridMovie.EditIndex = -1;
-            refreshdata();
+            Refreshdata();
         }
 
         protected void Grid_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -55,7 +54,7 @@ namespace WebApplication
             int i = cmd.ExecuteNonQuery();
             sqlConnection.Close();
             idGridMovie.EditIndex = -1;
-            refreshdata();
+            Refreshdata();
         }
 
     }

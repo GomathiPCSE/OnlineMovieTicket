@@ -63,7 +63,7 @@ namespace WebApplication
             }
             return false;
         }
-        internal static DataTable refreshdata()
+        internal static DataTable Refreshdata()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             SqlConnection sqlConnection = new SqlConnection(connectionString);
