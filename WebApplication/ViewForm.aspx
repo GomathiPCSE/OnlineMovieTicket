@@ -9,20 +9,17 @@
                     onrowdeleting="GridView1_RowDeleting" onrowediting="GridView1_RowEditing"   
                     onrowupdating="GridView1_RowUpdating">  
                     <Columns>  
-                        <asp:TemplateField HeaderText="S.No">  
-                            <EditItemTemplate>  
-                                <asp:TextBox ID="txtSlno" runat="server" Text='<%# Bind("slno") %>'></asp:TextBox>  
-                            </EditItemTemplate>  
+                        <asp:TemplateField HeaderText="S.No">   
                             <ItemTemplate>  
-                                <asp:Label ID="lbSlno" runat="server" Text='<%# Bind("slno") %>'></asp:Label>  
+                                <asp:Label ID="lbSlno" runat="server" Text='<%# Bind("SlNo") %>'></asp:Label>  
                             </ItemTemplate>  
                         </asp:TemplateField>  
                         <asp:TemplateField HeaderText="MovieName">  
                             <EditItemTemplate>  
-                                <asp:TextBox ID="txtMovie" runat="server" Text='<%# Bind("moviename") %>'></asp:TextBox>  
+                                <asp:TextBox ID="txtMovie" runat="server" Text='<%# Bind("MovieName") %>'></asp:TextBox>  
                             </EditItemTemplate>  
                             <ItemTemplate>  
-                                <asp:Label ID="lbmovie" runat="server" Text='<%# Bind("moviename") %>'></asp:Label>  
+                                <asp:Label ID="lbmovie" runat="server" Text='<%# Bind("MovieName") %>'></asp:Label>  
                             </ItemTemplate>  
                         </asp:TemplateField>  
                     </Columns>  

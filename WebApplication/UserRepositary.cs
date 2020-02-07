@@ -72,9 +72,6 @@ namespace WebApplication
             DataTable dt = new DataTable();
             dataAdapter.Fill(dt);
             return dt;
-            
-
-
         }
 
     }

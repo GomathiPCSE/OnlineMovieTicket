@@ -13,34 +13,26 @@ namespace WebApplication
         {
             if (!Page.IsPostBack)
             {
-                refreshdata();
-                GridView1.DataSource = dt;
-                GridView1.DataBind();
+                
             }
         }
-        public void refreshdata()
+        protected void refreshdata()
         {
-            SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;User Instance=True");
-            SqlCommand cmd = new SqlCommand("select * from Movie", con);
-            SqlDataAdapter sda = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-
-
+            DataTable dataTable;
+            dataTable = UserRepositary.refreshdata();
+            idGridMovie.DataSource = dataTable;
+            idGridMovie.DataBind();
         }
-
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;User Instance=True");
-            int id = Convert.ToInt16(GridView1.DataKeys[e.RowIndex].Values["id"].ToString());
+            int id = Convert.ToInt16(idGridMovie.DataKeys[e.RowIndex].Values["id"].ToString());
             con.Open();
             SqlCommand cmd = new SqlCommand("delete from tbl_data where id =@id", con);
             cmd.Parameters.AddWithValue("id", id);
             int i = cmd.ExecuteNonQuery();
             con.Close();
-            refreshdata();
+            UserRepositary.refreshdata();
         }
 
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
