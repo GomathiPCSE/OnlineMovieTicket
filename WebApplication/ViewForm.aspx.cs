@@ -13,6 +13,7 @@ namespace WebApplication
         {
             if (!Page.IsPostBack)
             {
+                refreshdata();
             }
         }
         protected void refreshdata()
