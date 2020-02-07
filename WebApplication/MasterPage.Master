@@ -1,0 +1,23 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="WebApplication.MasterPage" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h1 style="text-align:center;color:red">Online Movie Ticket Booking</h1>
+            <span style="margin-left: 1000px">
+                <asp:HyperLink runat="server" ID="lnkSignIn" Text="SignIn" NavigateUrl="~/SignIn.aspx"></asp:HyperLink>
+                <asp:HyperLink runat="server" ID="lnkSignUp" Text="SignUp" NavigateUrl="~/SignUp.aspx"></asp:HyperLink>
+            </span>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
