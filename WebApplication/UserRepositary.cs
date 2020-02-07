@@ -63,17 +63,19 @@ namespace WebApplication
             }
             return false;
         }
-        internal static DataTable ViewMovie()
+        internal static DataTable refreshdata()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-            {
-                sqlConnection.Open();
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("select * from moviename", sqlConnection);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-                return dataTable;
-            }
+            SqlConnection sqlConnection = new SqlConnection(connectionString);
+            SqlCommand cmd = new SqlCommand("select * from Movie", sqlConnection);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            dataAdapter.Fill(dt);
+            return dt;
+            
+
+
         }
+
     }
 }
