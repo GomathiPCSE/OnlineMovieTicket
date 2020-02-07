@@ -14,6 +14,7 @@
             <span style="margin-left: 1000px">
                 <asp:HyperLink runat="server" ID="lnkSignIn" Text="SignIn" NavigateUrl="~/SignIn.aspx"></asp:HyperLink>
                 <asp:HyperLink runat="server" ID="lnkSignUp" Text="SignUp" NavigateUrl="~/SignUp.aspx"></asp:HyperLink>
+                <asp:HyperLink runat="server" ID="lnkView" Text="ViewMovies" NavigateUrl="~/ViewForm.aspx"></asp:HyperLink>
             </span>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
