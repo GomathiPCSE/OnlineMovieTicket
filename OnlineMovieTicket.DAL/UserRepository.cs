@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using OnlineMovieTicket.Entity;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-namespace WebApplication
+namespace OnlineMovieTicket.DAL
 {
-    public class UserRepositary
+    public class UserRepository
     {
-        internal static bool Login(string mailId, string password)
+        public static bool Login(string mailId, string password)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             SqlConnection sqlConnection = new SqlConnection(connectionString);
@@ -30,7 +30,7 @@ namespace WebApplication
             }
             return false;
         }
-        internal static bool Insert(UserEntity user)
+        public static bool Insert(UserEntity user)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             SqlConnection sqlConnection = new SqlConnection(connectionString);
@@ -63,7 +63,7 @@ namespace WebApplication
             }
             return false;
         }
-        internal static DataTable Refreshdata()
+        public static DataTable Refreshdata()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             SqlConnection sqlConnection = new SqlConnection(connectionString);
@@ -73,7 +73,7 @@ namespace WebApplication
             dataAdapter.Fill(dt);
             return dt;
         }
-        internal static void RowDeleting(int id)
+        public static void RowDeleting(int id)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             SqlConnection sqlConnection = new SqlConnection(connectionString);
@@ -86,13 +86,28 @@ namespace WebApplication
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("Exception caught");
             }
             finally
             {
                 sqlConnection.Close();
+            }
+        }
+        public static void RowUpdating(string txtMovie,int id)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = new SqlCommand("SP_Update", sqlConnection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Movie", txtMovie);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    int i = cmd.ExecuteNonQuery();
+                }
             }
         }
     }

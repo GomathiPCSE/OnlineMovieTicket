@@ -212,8 +212,6 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="UserEntity.cs" />
-    <Compile Include="UserRepositary.cs" />
     <Compile Include="ViewForm.aspx.cs">
       <DependentUpon>ViewForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -256,6 +254,20 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineMovieTicket.BL\OnlineMovieTicket.BL.csproj">
+      <Project>{108d4972-34f4-4faa-a6da-a077e6729c7c}</Project>
+      <Name>OnlineMovieTicket.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineMovieTicket.Entity\OnlineMovieTicket.Entity.csproj">
+      <Project>{18e26472-a3fd-4b44-9855-3d11bca93c84}</Project>
+      <Name>OnlineMovieTicket.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Online\OnlineMovieTicket.Common.csproj">
+      <Project>{e95177ea-0aea-4a14-b68e-5cc92861604b}</Project>
+      <Name>OnlineMovieTicket.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineMovieTicket.BL;
+using System;
 namespace WebApplication
 {
     public partial class WebForm1 : System.Web.UI.Page
@@ -12,7 +13,7 @@ namespace WebApplication
             bool isValid = false;
             string mail = txtUser.Text;
             string password = txtPassword.Text;
-            isValid=UserRepositary.Login(mail, password);
+            isValid=UserBl.Login(mail, password);
             if(isValid)
             {
                 Response.Write("Login successfully");

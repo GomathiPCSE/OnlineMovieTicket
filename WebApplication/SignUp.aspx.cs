@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OnlineMovieTicket.BL;
+using OnlineMovieTicket.Entity;
+using System;
 namespace WebApplication
 {
     public partial class WebForm2 : System.Web.UI.Page
@@ -16,7 +18,7 @@ namespace WebApplication
             string password = txtPassword.Text;
             string conPassword = txtConPassword.Text;
             UserEntity user = new UserEntity(firstName, lastName, mobile, mail, password, conPassword);
-            if (UserRepositary.Insert(user))
+            if (UserBl.Insert(user))
             {
                 Response.Redirect("SignIn.aspx");
             }
