@@ -24,7 +24,7 @@ namespace WebApplication
         {
             int id = Convert.ToInt16(idGridMovie.DataKeys[e.RowIndex].Values["SlNo"].ToString());
             UserBl.RowDeleting(id);
-            UserBl.Refreshdata();
+            Refreshdata();
         }
         protected void Grid_RowEditing(object sender, GridViewEditEventArgs e)
         {
@@ -36,11 +36,19 @@ namespace WebApplication
             idGridMovie.EditIndex = -1;
             Refreshdata();
         }
+        protected void InsertClick(object sender,EventArgs e)
+        {
+            string movieName = (idGridMovie.FooterRow.FindControl("txtMovie") as TextBox).Text;
+            UserBl.RowInserting(movieName);
+            idGridMovie.EditIndex = -1;
+            Refreshdata();
+
+        }
         protected void Grid_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             string txtMovie = Convert.ToString((idGridMovie.Rows[e.RowIndex].FindControl("txtMovie") as TextBox).Text);
             int id = Convert.ToInt16(idGridMovie.DataKeys[e.RowIndex].Values["SlNo"].ToString());
-            UserBl.RowUpdating(txtMovie,id);
+            UserBl.RowUpdating(txtMovie, id);
             idGridMovie.EditIndex = -1;
             Refreshdata();
         }

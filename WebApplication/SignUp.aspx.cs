@@ -18,7 +18,7 @@ namespace WebApplication
             string password = txtPassword.Text;
             string conPassword = txtConPassword.Text;
             UserEntity user = new UserEntity(firstName, lastName, mobile, mail, password, conPassword);
-            if (UserBl.Insert(user))
+            if (UserBl.Register(user))
             {
                 Response.Redirect("SignIn.aspx");
             }

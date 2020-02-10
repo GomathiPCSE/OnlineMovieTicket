@@ -10,10 +10,9 @@ namespace OnlineMovieTicket.BL
             bool isOkay = UserRepository.Login(mailId, password);
             return isOkay;
         }
-
-        public static bool Insert(UserEntity user)
+        public static bool Register(UserEntity user)
         {
-            bool result = UserRepository.Insert(user);
+            bool result = UserRepository.Register(user);
             return result;
         }
         public static DataTable Refreshdata()
@@ -28,6 +27,10 @@ namespace OnlineMovieTicket.BL
         public static void RowUpdating(string txtMovie, int id)
         {
             UserRepository.RowUpdating(txtMovie, id);
+        }
+        public static void RowInserting(string movieName)
+        {
+            UserRepository.RowInserting(movieName);
         }
     }
 }
